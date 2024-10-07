@@ -37,7 +37,6 @@ public class MealServlet extends HttpServlet {
                 LocalTime.of(0, 0),
                 LocalTime.of(23, 59),
                 caloriesPerDay));
-        //mealsTo.forEach(meal -> log.info(meal.toString()));
         request.setAttribute("meals", mealsTo);
         log.info(System.getenv("TOPJAVA_ROOT"));
         request.getRequestDispatcher("/meals.jsp").forward(request, response);
