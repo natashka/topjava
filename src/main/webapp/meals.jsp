@@ -29,24 +29,24 @@
 <h3><a href="index.html">Home</a></h3>
 <hr>
 <h2>Meals</h2>
-<p><a href="">Add meal</a></p>
+<p><a href="meals?action=add">Add meal</a></p>
 <table>
     <thead>
-    <th>Date</th>
-    <th>Description</th>
-    <th>Calories</th>
-    <th>&nbsp;</th>
-    <th>&nbsp;</th>
+        <th>Date</th>
+        <th>Description</th>
+        <th>Calories</th>
+        <th>&nbsp;</th>
+        <th>&nbsp;</th>
     </thead>
     <tbody>
-    <c:forEach items="${meals}" var="meal">
+    <c:forEach items="${requestScope.meals}" var="meal">
         <tr style="color:${meal.excess ? 'red' : 'green'}">
             <fmt:parseDate value="${meal.dateTime}" pattern="yyyy-MM-dd'T'HH:mm" var="parsedDateTime" type="both"/>
             <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${ parsedDateTime }"/></td>
             <td>${meal.description}</td>
             <td>${meal.calories}</td>
-            <td><a href="">Update</a></td>
-            <td><a href="">Delete</a></td>
+            <td><a href="meals?action=update&id=${meal.id}">Update</a></td>
+            <td><a href="meals?action=delete&id=${meal.id}">Delete</a></td>
         </tr>
     </c:forEach>
     </tbody>
