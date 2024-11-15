@@ -1,16 +1,25 @@
 package ru.javawebinar.topjava.model;
 
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
+import org.springframework.format.annotation.NumberFormat;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
+@Entity
+@Table(name = "meal")
 public class Meal extends AbstractBaseEntity {
+    @Column(name = "data_time", nullable = false)
+    @NotBlank
     private LocalDateTime dateTime;
 
+    @Column(name = "description")
     private String description;
 
+    @Column(name = "calories", nullable = false)
+    @NotBlank
     private int calories;
 
     @ManyToOne(fetch = FetchType.LAZY)
